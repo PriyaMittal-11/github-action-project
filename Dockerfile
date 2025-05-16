@@ -6,7 +6,7 @@ RUN ls
 
 
 
-COPY app/*.jar /usr/src/app/app.jar
+COPY app/*.jar .
 WORKDIR /usr/src/app
 
 
