@@ -135,3 +135,25 @@ jobs:
       with:
           push: true
           tags: priya989/bankapp:latest
+
+
+  deploy_to_kubernetes:
+   runs-on: self-hosted
+   needs: buils_docker_image_and_push
+   steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: latest
+
+    - name: Use existing local kubeconfig
+      run: |
+        export KUBECONFIG=$HOME/.kube/config
+        kubectl config get-contexts
+
+    - name: Deploy to Local Kubernetes
+      run: |
+        kubectl apply -f ds.yml
