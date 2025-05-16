@@ -1,5 +1,5 @@
-FROM eclipse-temurin:17-jdk-alpine
-    
+FROM eclipse-temurin:17-jdk
+
 EXPOSE 8080
 
 RUN ls 
