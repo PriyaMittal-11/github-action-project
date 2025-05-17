@@ -136,9 +136,10 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
-          push: true
-          tags: priya989/bankapp:latest
-
+       context: .                # This is CRITICAL – the current directory must include 'app/' folder
+       file: Dockerfile          # Optional if your Dockerfile is named exactly `Dockerfile` at root
+       push: true
+       tags: priya989/bankapp:latest
 
   deploy_to_kubernetes:
    runs-on: self-hosted
