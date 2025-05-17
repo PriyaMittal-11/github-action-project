@@ -4,10 +4,10 @@ EXPOSE 8080
 
 RUN ls 
 
-
-
-COPY app/*.jar .
 WORKDIR /usr/src/app
+
+COPY app/*.jar /usr/src/app/app.jar
+
 
 
 
